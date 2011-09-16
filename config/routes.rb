@@ -1,4 +1,18 @@
 CouponSociable::Application.routes.draw do
+  root :to                   => 'home#index'
+
+  match 'welcome'            => 'home#welcome'
+
+  match 'design'             => 'home#design'
+
+  match 'login'              => 'login#index'
+
+  match 'login/authenticate' => 'login#authenticate'
+
+  match 'login/finalize'     => 'login#finalize'
+
+  match 'login/logout'       => 'login#logout'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
