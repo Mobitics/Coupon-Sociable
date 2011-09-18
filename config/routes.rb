@@ -12,6 +12,11 @@ CouponSociable::Application.routes.draw do
   match 'login/finalize'     => 'login#finalize'
 
   match 'login/logout'       => 'login#logout'
+  
+  match 'coupon/:shop_id'	=> 'coupons#index'
+  
+  resources :shops
+  resources :coupons
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

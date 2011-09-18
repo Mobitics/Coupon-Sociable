@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  shopify_id: 1
+  coupon_code: MyString
+  multiple_use: false
+  update_text: MyString
+  accepts_emails: false
+
+two:
+  shopify_id: 1
+  coupon_code: MyString
+  multiple_use: false
+  update_text: MyString
+  accepts_emails: false

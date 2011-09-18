@@ -8,11 +8,9 @@ class HomeController < ApplicationController
   end
   
   def index
-    # get 3 products
-    @products = ShopifyAPI::Product.find(:all, :params => {:limit => 3})
-
-    # get latest 3 orders
-    @orders   = ShopifyAPI::Order.find(:all, :params => {:limit => 3, :order => "created_at DESC" })
+	# Get the current shop in the database, or create a new entry if this is the first time the shop has logged in
+   	shopify = ShopifyAPI::Shop.current
+   	@shop = Shop.find_or_create_by_shopify_id(:shopify_id => shopify.id)
   end
   
 end
