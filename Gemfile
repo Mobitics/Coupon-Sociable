@@ -2,9 +2,8 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.0'
 gem 'shopify_app'
-gem 'twitter'
-gem 'mini_fb'
 gem 'omniauth'
+gem 'hoe', '~> 1.5.1'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
