@@ -9,7 +9,7 @@ gem 'hoe', '~> 1.5.1'
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 group :production do
-  gem 'therubyracer-heroku'
+  gem 'therubyracer'
   gem 'pg'
 end
 group :development, :test do
