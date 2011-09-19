@@ -13,7 +13,7 @@ module CouponSociable
   class Application < Rails::Application
     
     # Shopify API connection credentials:
-    if Rails.env = "development"
+    if Rails.env == "development"
     config.shopify.api_key = "55126840d1824640674ceb413dc1afec"
     config.shopify.secret = "a3c571e9f927161d925c5f4cdc6a9013"
     else
