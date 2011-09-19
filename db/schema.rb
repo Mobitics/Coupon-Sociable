@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110916203252) do
+ActiveRecord::Schema.define(:version => 20110918235442) do
 
   create_table "shops", :force => true do |t|
     t.integer  "shopify_id"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(:version => 20110916203252) do
     t.boolean  "multiple_use"
     t.string   "update_text"
     t.boolean  "accepts_emails"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "token"
+    t.string   "secret"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
