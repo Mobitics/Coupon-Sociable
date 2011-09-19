@@ -10,7 +10,6 @@ gem 'hoe', '~> 1.5.1'
 
 group :production do
   gem 'therubyracer'
-  gem 'pg'
 end
 group :development, :test do
   gem 'sqlite3'
