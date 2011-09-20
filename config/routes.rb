@@ -18,6 +18,9 @@ CouponSociable::Application.routes.draw do
   match "/auth/:provider/callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout
   
+  match "show_coupon" => 'coupons#show_coupon'
+  match "status_update" => 'coupons#status_update'
+  
   resources :shops
   resources :coupons
 
