@@ -11,8 +11,14 @@ class CouponsController < ApplicationController
 		if current_user.provider == "twitter"
 			# set up for the Twitter gem
 			Twitter.configure do |config|
+				if Rails.env == "development"
   				config.consumer_key = "Oz3xNAgL2equQNBYkEWFw"
   				config.consumer_secret = "xC1CGmxCH0FvJbkxt1F3wWbcuc9EIH0ZFTUX0YJmLqA"
+  				else
+  				config.consumer_key = "VZNx04Rs1aP3qdvKccpxsg"
+  				config.consumer_secret = "XfkcQM8UIab8bR7u9wnTqYbXjrVXv0tCSJJZTOZsMk"
+  				end
+  				
   				config.oauth_token = current_user.token
   				config.oauth_token_secret = current_user.secret
   			end
