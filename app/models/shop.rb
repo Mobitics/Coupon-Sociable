@@ -4,14 +4,6 @@ attr_accessible :shopify_id, :coupon_code, :multiple_use, :update_text, :accepts
 
 before_create :set_defaults
 
-	def accepts_emails?
-		return self.accepts_emails
-	end
-	
-	def multiple_use?
-		return self.multiple_use
-	end
-
 private
 	def set_defaults
 		shopify = ShopifyAPI::Shop.current

@@ -1,1 +1,9 @@
-<%= @coupon_code %>
+<% if current_user && posted %>
+
+Thanks! Your coupon code is: <%= @coupon_code %>
+
+<% else %>
+
+Sorry, you must first post to Facebook or Twitter to get the coupon code!
+
+<% end %>

@@ -1,8 +1,12 @@
 <% if current_user %>
-  Welcome <%= current_user.name %>!
-  <%= link_to "Sign Out", signout_path %>
+  <% if @shop.multiple_use == false && posted %>
+  	<p>Sorry, you've already posted before!</p>
+  <% else %>
+  	Welcome <%= current_user.name %>!
+  	<%= link_to "Sign Out", signout_path %>
   
-  <p><%= link_to "Post to #{current_user.provider.capitalize} and get your coupon!", status_update_path %></p>
+  	<p><%= link_to "Post to #{current_user.provider.capitalize} and get your coupon!", status_update_path %></p>
+  <% end %>
 <% else %>
   <%= link_to "Sign in with Twitter", "/auth/twitter" %> or <%= link_to "Sign in with Facebook", "/auth/facebook" %>
 <% end %>
