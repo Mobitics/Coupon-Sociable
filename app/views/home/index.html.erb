@@ -50,7 +50,7 @@
 
 <div id="orders">
 
-<p>Paste this somewhere in your store: <% if Rails.env == "development" %><code>http://localhost:3000/coupon/<%= @shop.shopify_id %></code><% else %><code>http://coupon-sociable.heroku.com/coupon/<%= @shop.shopify_id %></code><% end %></p>
+<p>Copy and paste this link somewhere in your store: <% if Rails.env == "development" %><code>http://localhost:3000/coupon/<%= @shop.shopify_id %></code><% else %><code>http://coupon-sociable.heroku.com/coupon/<%= @shop.shopify_id %></code><% end %></p>
 
 <%= form_for @shop do |f| %>
 	<p><%= f.label :coupon_code, "Please enter a coupon code to return to customers when they complete this promotion" %> <br />
