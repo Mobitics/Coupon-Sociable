@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+	skip_filter :ensure_merchant_has_paid
 def create
   auth = request.env["omniauth.auth"]
   provider = params["provider"]

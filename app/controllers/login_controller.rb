@@ -1,4 +1,5 @@
 class LoginController < ApplicationController
+  skip_filter :ensure_merchant_has_paid
   def index
     # Ask user for their #{shop}.myshopify.com address
     
@@ -40,6 +41,16 @@ class LoginController < ApplicationController
     flash[:notice] = "Successfully logged out."
     
     redirect_to :action => 'index'
+  end
+  
+  def cancel_account
+  	ShopifyAPI::Base.site = session[:shopify].site
+  	current_plan = ShopifyAPI::RecurringApplicationCharge.current
+	current_plan.cancel
+  	session[:shopify] = nil
+  	flash[:error] = "Your account has been cancelled."
+  	
+  	redirect_to root_url
   end
   
   protected

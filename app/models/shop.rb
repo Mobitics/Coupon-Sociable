@@ -10,5 +10,6 @@ private
 		self.multiple_use = false
 		self.update_text = "I'm shopping at #{shopify.name} http://#{shopify.domain}"
 		self.accepts_emails = true
+		self.email = shopify.email
 	end
 end

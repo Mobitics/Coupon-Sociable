@@ -21,6 +21,10 @@ CouponSociable::Application.routes.draw do
   match "show_coupon" => 'coupons#show_coupon'
   match "status_update" => 'coupons#status_update'
   
+  match 'charges/confirm' => 'charges#confirm'
+  
+  match 'cancel'	=> 'login#cancel_account'
+  
   resources :shops
   resources :coupons
 

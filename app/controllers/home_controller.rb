@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   
   around_filter :shopify_session, :except => 'welcome'
+  skip_filter :ensure_merchant_has_paid, :except => 'index'
   
   def welcome
     current_host = "#{request.host}#{':' + request.port.to_s if request.port != 80}"

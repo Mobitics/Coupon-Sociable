@@ -1,4 +1,5 @@
 class ShopsController < ApplicationController
+	skip_filter :ensure_merchant_has_paid
 	def update
 		@shop = Shop.find(params[:id])
     	if @shop.update_attributes(params[:shop])

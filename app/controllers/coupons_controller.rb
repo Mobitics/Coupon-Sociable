@@ -1,5 +1,5 @@
 class CouponsController < ApplicationController
-
+	skip_filter :ensure_merchant_has_paid
 	def index
 		@shop_id = params[:shop_id]
 		session[:current_shop] = @shop_id
@@ -48,12 +48,11 @@ class CouponsController < ApplicationController
   		@post.update_attributes(:user_id => current_user.id)
   		@post.save
   		
-  		# TODO: send an email
   		# Check if the store would like to receive email
-  		# if @shop.receive_email
-  		#	Notifier.post_email(@shop.email).deliver
-  		# end
-
+  		if @shop.accepts_emails
+  			# if they do want to receive email, send them an email
+  			Notifier.post_email(@shop.email, current_user).deliver
+  		end
 		
   		# redirect the user to show the coupon code
   		redirect_to show_coupon_path
