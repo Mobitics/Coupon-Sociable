@@ -16,7 +16,7 @@
 	<%= f.radio_button("multiple_use", "true") %> Allow multiple use <br /> <%= f.radio_button("multiple_use", "false") %> Single time use only</p>
 	
 	<p><%= f.label :update_text, "What should be posted to their Facebook or Twitter account to complete the offer?" %> <br />
-	<%= f.text_field :update_text %></p>
+	<%= f.text_field :update_text, :size => 100 %></p>
 	
 	<p><%= f.label :accepts_emails, "Would you like to receive an email when someone completes the offer?" %> <br />
 	<%= f.radio_button("accepts_emails", "true") %> Yes <br /> <%= f.radio_button("accepts_emails", "false") %> No</p>

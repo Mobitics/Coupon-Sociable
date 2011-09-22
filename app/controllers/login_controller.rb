@@ -47,10 +47,10 @@ class LoginController < ApplicationController
   	ShopifyAPI::Base.site = session[:shopify].site
   	current_plan = ShopifyAPI::RecurringApplicationCharge.current
 	current_plan.cancel
-  	session[:shopify] = nil
-  	flash[:error] = "Your account has been cancelled."
+	flash[:error] = "Your account has been cancelled."
   	
   	redirect_to root_url
+  	session[:shopify] = nil
   end
   
   protected
