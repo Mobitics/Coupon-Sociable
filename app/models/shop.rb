@@ -1,6 +1,6 @@
 class Shop < ActiveRecord::Base
 
-attr_accessible :shopify_id, :coupon_code, :multiple_use, :update_text, :accepts_emails
+attr_accessible :shopify_id, :coupon_code, :multiple_use, :update_text, :accepts_emails, :email
 
 before_create :set_defaults
 
