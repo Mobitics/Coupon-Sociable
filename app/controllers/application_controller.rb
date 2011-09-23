@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  helper_method :current_user, :posted
+  helper_method :current_user, :posted, :get_facebook_count, :get_twitter_count
 
   before_filter :ensure_merchant_has_paid
 
@@ -39,6 +39,32 @@ def posted
 	else
 		return false
 	end
+end
+
+def get_facebook_count(campaign)
+	all_posts = Post.where(:campaign_id => campaign.id)
+	facebook_posts = 0
+	all_posts.each do |post|
+		user = User.find(post.user_id)
+		if user.provider == 'facebook'
+			facebook_posts += 1
+		end
+	end
+	
+	return facebook_posts
+end
+
+def get_twitter_count(campaign)
+	all_posts = Post.where(:campaign_id => campaign.id)
+	twitter_posts = 0
+	all_posts.each do |post|
+		user = User.find(post.user_id)
+		if user.provider == 'twitter'
+			twitter_posts += 1
+		end
+	end
+	
+	return twitter_posts
 end
 
 end

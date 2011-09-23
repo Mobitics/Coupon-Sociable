@@ -11,12 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110921191231) do
+ActiveRecord::Schema.define(:version => 20110922205304) do
+
+  create_table "campaigns", :force => true do |t|
+    t.string   "coupon_code"
+    t.boolean  "active"
+    t.integer  "store_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "posts", :force => true do |t|
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "campaign_id"
   end
 
   create_table "shops", :force => true do |t|

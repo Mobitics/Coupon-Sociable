@@ -9,6 +9,7 @@ class CouponsController < ApplicationController
 	
 	def status_update
 		@shop = Shop.find_by_shopify_id(session[:current_shop])
+		@campaign = Campaign.where(:store_id => @shop.id, :active => true)
 		@post = Post.new
 		if current_user.provider == "twitter"
 			# set up for the Twitter gem
@@ -45,7 +46,7 @@ class CouponsController < ApplicationController
    		end
  		
  		# save the update
-  		@post.update_attributes(:user_id => current_user.id)
+  		@post.update_attributes(:user_id => current_user.id, :campaign_id => @campaign.last.id)
   		@post.save
   		
   		# Check if the store would like to receive email

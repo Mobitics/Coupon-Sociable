@@ -6,14 +6,41 @@
 
 <div id="orders">
 
+<h3>Setup and Installation</h3>
+
 <p>Copy and paste the code in blue somewhere in your store's theme. You might want to put it in your Shopping Cart:</p> 
 
 <p class="blue"><% if Rails.env == "development" %><code>{{ 'Post to Twitter or Facebook and get a discount!' | link_to: 'http://localhost:3000/coupon/<%= @shop.shopify_id %>' }}</code><% else %><code>{{ 'Post to Twitter or Facebook and get a discount!' | link_to: 'http://coupon-sociable.heroku.com/coupon/<%= @shop.shopify_id %>' }}</code><% end %></p>
 
-<%= form_for @shop do |f| %>
-	<p><%= f.label :coupon_code, "Please enter a coupon code to return to customers when they complete this promotion" %> <br />
-	<%= f.text_field :coupon_code %></p>
+<h3>Campaign Information</h3>
+
+<% if @current_campaign.empty? %>
+	<p>You don't have a current campaign! Create a new campaign:</p>
+	<%= form_for @campaign do |f| %>
+		<p><%= f.label :coupon_code, "Enter coupon code:" %> <br />
+		<%= f.text_field :coupon_code %></p>
+		<%= f.submit "Add new campaign" %></p>
+	<% end %>
+<% else %>
+	<p>Your current campaign coupon code is: <%= @current_campaign.first.coupon_code %></p>
+	<p>Create a new campaign. By creating a new campaign, you will set your current campaign to inactive:</p>
+	<%= form_for @campaign do |f| %>
+		<p><%= f.label :coupon_code, "Enter new campaign's coupon code:" %> <br />
+		<%= f.text_field :coupon_code %></p>
+		<p><%= f.submit "Add new campaign" %></p>
+	<% end %>
 	
+	<p><b>Past Campaigns</b></p>
+	<% @all_campaigns.each do |campaign| %>
+		<p>Campaign: <%= campaign.coupon_code %><br />
+		Twitter posts: <%= get_twitter_count(campaign) %><br />
+		Facebook posts: <%= get_facebook_count(campaign) %></p>
+	<% end %>
+<% end %>
+
+<h3>Account Settings</h3>
+
+<%= form_for @shop do |f| %>
 	<p><%= f.label :multiple_use, "Should customers be able to use the coupon more than once?" %> <br />
 	<%= f.radio_button("multiple_use", "true") %> Allow multiple use <br /> <%= f.radio_button("multiple_use", "false") %> Single time use only</p>
 	

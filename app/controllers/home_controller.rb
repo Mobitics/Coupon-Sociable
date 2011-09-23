@@ -12,6 +12,9 @@ class HomeController < ApplicationController
 	# Get the current shop in the database, or create a new entry if this is the first time the shop has logged in
    	shopify = ShopifyAPI::Shop.current
    	@shop = Shop.find_or_create_by_shopify_id(:shopify_id => shopify.id)
+   	@current_campaign = Campaign.where(:store_id => @shop.id, :active => true)
+   	@campaign = Campaign.new
+   	@all_campaigns = Campaign.where(:store_id => @shop.id)
   end
   
 end

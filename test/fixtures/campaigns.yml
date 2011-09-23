@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  coupon_code: MyString
+  active: false
+  store_id: 1
+
+two:
+  coupon_code: MyString
+  active: false
+  store_id: 1
