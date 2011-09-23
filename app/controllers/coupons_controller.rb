@@ -63,9 +63,12 @@ class CouponsController < ApplicationController
   		# get the current shop object using the current_shop session
   		@shop = Shop.find_by_shopify_id(session[:current_shop])
   		
-  		# used to display the coupon code in the view
-  		@coupon_code = @shop.coupon_code
-  		
+		# get the current campaign for the shop
+		@campaign = Campaign.where(:store_id => @shop.id, :active => true)
+		
+		# display the coupon code in the current campaign
+		@coupon_code = @campaign.last.coupon_code
+		
   		# do not use the main layout
   		render :layout => false
   	end

@@ -23,18 +23,21 @@
 	<% end %>
 <% else %>
 	<p>Your current campaign coupon code is: <%= @current_campaign.first.coupon_code %></p>
-	<p>Create a new campaign. By creating a new campaign, you will set your current campaign to inactive:</p>
+	
+	<b>Create a new campaign</b>
+	<p>By creating a new campaign, you will set your current campaign to inactive:</p>
 	<%= form_for @campaign do |f| %>
 		<p><%= f.label :coupon_code, "Enter new campaign's coupon code:" %> <br />
 		<%= f.text_field :coupon_code %></p>
 		<p><%= f.submit "Add new campaign" %></p>
 	<% end %>
 	
-	<p><b>Past Campaigns</b></p>
+	<p><b>Campaign Stats</b></p>
 	<% @all_campaigns.each do |campaign| %>
 		<p>Campaign: <%= campaign.coupon_code %><br />
 		Twitter posts: <%= get_twitter_count(campaign) %><br />
-		Facebook posts: <%= get_facebook_count(campaign) %></p>
+		Facebook posts: <%= get_facebook_count(campaign) %><br />
+		Status: <% if campaign.active == true %>Active<% else %>Inactive<% end%></p>
 	<% end %>
 <% end %>
 

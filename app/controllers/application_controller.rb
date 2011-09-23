@@ -33,12 +33,16 @@ def current_user
 end
 
 def posted
- 	@post = Post.find_by_user_id(current_user) if current_user
-	if @post
-		return true
-	else
-		return false
+	posted = false
+ 	@posts = Post.where(:user_id => current_user) if current_user
+ 	@posts.each do |post|
+ 		campaign = Campaign.find(post.campaign_id)
+ 		if campaign.active == true
+			posted = true
+		end
 	end
+	
+	return posted
 end
 
 def get_facebook_count(campaign)
