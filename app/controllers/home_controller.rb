@@ -39,25 +39,25 @@ return false;
    
    else 
 
-	@code = '<SCRIPT TYPE="text/javascript">
+	@code = "<SCRIPT TYPE=\"text/javascript\">
 <!--
 function popup(mylink, windowname)
 {
 if (! window.focus)return true;
 var href;
-if (typeof(mylink) == \'string\')
+if (typeof(mylink) == 'string')
    href=mylink;
 else
    href=mylink.href;
-window.open(href, windowname, \'width=400,height=200,scrollbars=yes\');
+window.open(href, windowname, 'width=400,height=200,scrollbars=yes');
 return false;
 }
 //-->
 </SCRIPT>
 
 <A 
-   HREF="http://coupon-sociable.herokuapp.com/coupon/#{@shop.shopify_id}" 
-   onClick="return popup(this, \'notes\')">Post to Twitter or Facebook and get a discount!</A>'
+   HREF=\"http://coupon-sociable.herokuapp.com/coupon/#{@shop.shopify_id}\" 
+   onClick=\"return popup(this, 'notes')\">Post to Twitter or Facebook and get a discount!</A>"
    end
   end
   
