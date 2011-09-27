@@ -15,6 +15,49 @@ class HomeController < ApplicationController
    	@current_campaign = Campaign.where(:store_id => @shop.id, :active => true)
    	@campaign = Campaign.new
    	@all_campaigns = Campaign.where(:store_id => @shop.id)
+   	
+   	if Rails.env == "development"
+   	
+   	@code = "<SCRIPT TYPE='text/javascript'>
+<!--
+function popup(mylink, windowname)
+{
+if (! window.focus)return true;
+var href;
+if (typeof(mylink) == 'string')
+   href=mylink;
+else
+   href=mylink.href;
+window.open(href, windowname, 'width=400,height=200,scrollbars=yes');
+return false;
+}
+//-->
+</SCRIPT>
+<A 
+   HREF='http://localhost:3000/coupon/#{@shop.shopify_id}' 
+   onClick='return popup(this, 'notes')'>Post this to Facebook or Twitter and get a discount!</A>"
+   
+   else 
+
+	@code = "<SCRIPT TYPE='text/javascript'>
+<!--
+function popup(mylink, windowname)
+{
+if (! window.focus)return true;
+var href;
+if (typeof(mylink) == 'string')
+   href=mylink;
+else
+   href=mylink.href;
+window.open(href, windowname, 'width=400,height=200,scrollbars=yes');
+return false;
+}
+//-->
+</SCRIPT>
+<A 
+   HREF='http://coupon-sociable.heroku.com/coupon/#{@shop.shopify_id}' 
+   onClick='return popup(this, 'notes')'>Post this to Facebook or Twitter and get a discount!</A>"
+   end
   end
   
 end

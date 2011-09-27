@@ -10,7 +10,12 @@
 
 <p>Copy and paste the code in blue somewhere in your store's theme. You might want to put it in your Shopping Cart:</p> 
 
-<p class="blue"><% if Rails.env == "development" %><code>{{ 'Post to Twitter or Facebook and get a discount!' | link_to: 'http://localhost:3000/coupon/<%= @shop.shopify_id %>' }}</code><% else %><code>{{ 'Post to Twitter or Facebook and get a discount!' | link_to: 'http://coupon-sociable.heroku.com/coupon/<%= @shop.shopify_id %>' }}</code><% end %></p>
+<p class="blue">
+<code>
+<%= @code.to_s %>
+</code>
+</p>
+
 
 <h3>Campaign Information</h3>
 
