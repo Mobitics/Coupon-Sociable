@@ -55,7 +55,7 @@ return false;
 //-->
 </SCRIPT>
 <A 
-   HREF='http://coupon-sociable.heroku.com/coupon/#{@shop.shopify_id}' 
+   HREF='http://coupon-sociable.herokuapp.com/coupon/#{@shop.shopify_id}' 
    onClick='return popup(this, 'notes')'>Post this to Facebook or Twitter and get a discount!</A>"
    end
   end
