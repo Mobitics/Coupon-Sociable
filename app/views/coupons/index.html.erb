@@ -8,5 +8,5 @@
   	<p><%= link_to "Post to #{current_user.provider.capitalize} and get your coupon!", status_update_path %></p>
   <% end %>
 <% else %>
-  <%= link_to image_tag("login_twitter.png"), "/auth/twitter" %> or <%= link_to image_tag("login_facebook.png"), "/auth/facebook" %>
+  <a href="/auth/twitter"><img src="http://coupon-sociable.herokuapp.com/assets/login_twitter.png" /></a> or <a href="/auth/facebook"><img src="http://coupon-sociable.herokuapp.com/assets/login_facebook.png" /></a>
 <% end %>
