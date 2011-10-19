@@ -1,5 +1,5 @@
 CouponSociable::Application.routes.draw do
-  root :to                   => 'login#index'
+  root :to                   => 'home#index'
 
   match 'welcome'            => 'home#welcome'
 
