@@ -13,13 +13,13 @@ module CouponSociable
   class Application < Rails::Application
     
     # Shopify API connection credentials:
-    if Rails.env == "development"
-    config.shopify.api_key = "55126840d1824640674ceb413dc1afec"
-    config.shopify.secret = "a3c571e9f927161d925c5f4cdc6a9013"
-    else
-    config.shopify.api_key = "2cc7a62a418612172d0debe6214ef45a"
-    config.shopify.secret = "086d6c4bec85bffaef20a718d76768f3"
-    end
+    #if Rails.env == "development"
+    #config.shopify.api_key = "55126840d1824640674ceb413dc1afec"
+    #config.shopify.secret = "a3c571e9f927161d925c5f4cdc6a9013"
+    #else
+    #config.shopify.api_key = "2cc7a62a418612172d0debe6214ef45a"
+    #config.shopify.secret = "086d6c4bec85bffaef20a718d76768f3"
+    #end
     
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
