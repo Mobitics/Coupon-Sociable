@@ -35,15 +35,20 @@ class CouponsController < ApplicationController
   			
   		elsif current_user.provider == "facebook"
   			if Rails.env == "development"
-				 client = OAuth2::Client.new('224049387650906', 'e8e33bd125343a6107f7220f046b7203', :site => 'https://graph.facebook.com')
+				 #client = OAuth2::Client.new('224049387650906', 'e8e33bd125343a6107f7220f046b7203', :site => 'https://graph.facebook.com')
 			else
-				client = OAuth2::Client.new('157999927621589', 'b72e2c73b99ff5959c212461fd21b510', :site => 'https://graph.facebook.com', :ssl => {:ca_path => '/etc/ssl/certs'})
+				#client = OAuth2::Client.new('157999927621589', 'b72e2c73b99ff5959c212461fd21b510', :site => 'https://graph.facebook.com', :ssl => {:ca_path => '/etc/ssl/certs'})
 			end
 			 
- 			token = OAuth2::AccessToken.new(client, current_user.token)
+ 			#token = OAuth2::AccessToken.new(client, current_user.token)
+ 			
+ 			me = FbGraph::User.me(current_user.token)
+			me.feed!(
+  				:message => @shop.update_text
+  			)
  			
  			#post to Facebook
- 			token.post('/me/feed', :message => @shop.update_text)
+ 			#token.post('/me/feed', :message => @shop.update_text)
    		end
  		
  		# save the update
@@ -58,6 +63,9 @@ class CouponsController < ApplicationController
 		
   		# redirect the user to show the coupon code
   		redirect_to show_coupon_path
+  		
+  		rescue Twitter::Error => e
+      		logger.error "#{e.message}."
   	end
   	
   	def show_coupon  		
