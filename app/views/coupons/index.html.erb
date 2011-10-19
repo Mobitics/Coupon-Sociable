@@ -1,5 +1,5 @@
 <% if current_user %>
-<% if @coupons == nil %>
+<% if @coupons.empty? %>
 <p>Sorry, this merchant needs to complete set-up before you can get a discount!</p>
 <% else %>
   <% if @shop.multiple_use == false && posted %>

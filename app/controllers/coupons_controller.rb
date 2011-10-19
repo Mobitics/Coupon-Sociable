@@ -4,7 +4,7 @@ class CouponsController < ApplicationController
 		@shop_id = params[:shop_id]
 		session[:current_shop] = @shop_id
 		@shop = Shop.find_by_shopify_id(@shop_id)
-		@coupons = Campaign.where(:shop_id => @shop.id)
+		@coupons = Campaign.where(:store_id => @shop.id)
 		render :layout => false
 	end
 	
