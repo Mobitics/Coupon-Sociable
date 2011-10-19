@@ -11,7 +11,7 @@ class HomeController < ApplicationController
   def index
 	# Get the current shop in the database, or create a new entry if this is the first time the shop has logged in
    	shopify = ShopifyAPI::Shop.current
-   	if shopify == nil
+   	if shopify.empty?
    		redirect_to "/login"
    	end
    	@shop = Shop.find_or_create_by_shopify_id(:shopify_id => shopify.id)
