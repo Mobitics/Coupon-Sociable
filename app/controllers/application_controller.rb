@@ -13,11 +13,15 @@ class ApplicationController < ActionController::Base
   	ShopifyAPI::Base.site = session[:shopify].site if session[:shopify]
   	shopify_session do
    		unless ShopifyAPI::RecurringApplicationCharge.current
+   			shop = ShopifyAPI::Shop.current
       		if Rails.env == "development"
       			charge = ShopifyAPI::RecurringApplicationCharge.create(:name => "Basic plan", :price => 5.00, :return_url => 'http://localhost:3000/charges/confirm', :trial_days => 30, :test => true)
       		else
-      			#TODO: on deploy, change this so that test != true
-				charge = ShopifyAPI::RecurringApplicationCharge.create(:name => "Basic plan", :price => 5.00, :return_url => 'https://coupon-sociable.herokuapp.com/charges/confirm', :trial_days => 30)
+				if shop.plan_name == "development"
+					charge = ShopifyAPI::RecurringApplicationCharge.create(:name => "Basic plan", :price => 5.00, :return_url => 'https://coupon-sociable.herokuapp.com/charges/confirm', :trial_days => 30, :test => true)
+				else
+					charge = ShopifyAPI::RecurringApplicationCharge.create(:name => "Basic plan", :price => 5.00, :return_url => 'https://coupon-sociable.herokuapp.com/charges/confirm', :trial_days => 30)
+				end
 			end
 			
 			redirect_to ShopifyAPI::RecurringApplicationCharge.pending.first.confirmation_url 
