@@ -56,8 +56,8 @@ class HomeController < ApplicationController
 					}"
  @code_line_4 = "//-->"
  @code_line_5 =	"</SCRIPT>"
- @code_line_6	= "<A HREF=\"http://couponsociable.herokuapp.com/coupon/#{@shop.shopify_id}\" 
-   onClick=\"return popup(this, 'notes')\"><IMG SRC=\"http://couponsociable.herokuapp.com/assets/Coupon-Sociable.png\" /></A>"
+ @code_line_6	= "<A HREF=\"http://couponsociable.com/coupon/#{@shop.shopify_id}\" 
+   onClick=\"return popup(this, 'notes')\"><IMG SRC=\"http://couponsociable.com/assets/Coupon-Sociable.png\" /></A>"
    
    end
   end
