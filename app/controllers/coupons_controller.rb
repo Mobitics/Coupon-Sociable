@@ -5,7 +5,7 @@ class CouponsController < ApplicationController
 		session[:current_shop] = @shop_id
 		@shop = Shop.find_by_shopify_id(@shop_id)
 		@coupons = Campaign.where(:store_id => @shop.id)
-		render :layout => false
+		render :layout => 'popup'
 	end
 	
 	def status_update
