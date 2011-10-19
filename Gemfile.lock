@@ -203,6 +203,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.1.0)
+  faraday
   hoe (~> 1.5.1)
   jquery-rails
   omniauth

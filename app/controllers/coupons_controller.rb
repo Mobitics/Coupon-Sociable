@@ -4,6 +4,7 @@ class CouponsController < ApplicationController
 		@shop_id = params[:shop_id]
 		session[:current_shop] = @shop_id
 		@shop = Shop.find_by_shopify_id(@shop_id)
+		@coupons = Coupon.where(:shop_id => @shop.id)
 		render :layout => false
 	end
 	
@@ -36,7 +37,7 @@ class CouponsController < ApplicationController
   			if Rails.env == "development"
 				 client = OAuth2::Client.new('224049387650906', 'e8e33bd125343a6107f7220f046b7203', :site => 'https://graph.facebook.com')
 			else
-				client = OAuth2::Client.new('157999927621589', 'b72e2c73b99ff5959c212461fd21b510', :site => 'https://graph.facebook.com') # :ssl => {:ca_path => '/etc/ssl/certs }
+				client = OAuth2::Client.new('157999927621589', 'b72e2c73b99ff5959c212461fd21b510', :site => 'https://graph.facebook.com', :ssl => {:ca_path => '/etc/ssl/certs'})
 			end
 			 
  			token = OAuth2::AccessToken.new(client, current_user.token)

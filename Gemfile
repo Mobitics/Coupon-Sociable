@@ -6,6 +6,7 @@ gem 'shopify_api'
 gem 'omniauth'
 gem 'hoe', '~> 1.5.1'
 gem 'twitter'
+gem 'faraday'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
