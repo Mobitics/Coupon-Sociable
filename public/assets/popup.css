@@ -5,3 +5,14 @@ body {
 	margin-right: auto;
 	width: 50%;
 }
+
+.sociable {
+	list-style:none;
+}
+
+.sociable li {
+	float:left;
+	border:none;
+}
+
+.sociable li a {border:none;}
