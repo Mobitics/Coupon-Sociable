@@ -17,7 +17,9 @@ class ApplicationController < ActionController::Base
       		if Rails.env == "development"
       			charge = ShopifyAPI::RecurringApplicationCharge.create(:name => "Basic plan", :price => 5.00, :return_url => 'http://localhost:3000/charges/confirm', :trial_days => 30, :test => true)
       		else
-				if shop.plan_name == "development"
+      			if shop.myshopify_domain == "luxedesignerhandbags.myshopify.com"
+      				charge = ShopifyAPI::RecurringApplicationCharge.create(:name => "Mobitics plan", :price => 0.00, :return_url => 'https://couponsociable.herokuapp.com/charges/confirm', :trial_days => 30, :test => true)
+				elsif shop.plan_name == "development"
 					charge = ShopifyAPI::RecurringApplicationCharge.create(:name => "Basic plan", :price => 5.00, :return_url => 'https://couponsociable.herokuapp.com/charges/confirm', :trial_days => 30, :test => true)
 				else
 					charge = ShopifyAPI::RecurringApplicationCharge.create(:name => "Basic plan", :price => 5.00, :return_url => 'https://couponsociable.herokuapp.com/charges/confirm', :trial_days => 30)
