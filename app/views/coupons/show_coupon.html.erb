@@ -1,3 +1,7 @@
+<% if @error %>
+<%= @error %>
+<% else %>
+
 <% if current_user && posted %>
 
 <p>Thanks! Your coupon code is:</p>
@@ -10,4 +14,5 @@
 
 Sorry, you must first post to Facebook or Twitter to get the coupon code!
 
+<% end %>
 <% end %>

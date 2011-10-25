@@ -14,6 +14,7 @@ class CouponsController < ApplicationController
 		@post = Post.new
 		if current_user.provider == "twitter"
 			# set up for the Twitter gem
+			begin
 			Twitter.configure do |config|
 				if Rails.env == "development"
   				config.consumer_key = "Oz3xNAgL2equQNBYkEWFw"
@@ -32,6 +33,11 @@ class CouponsController < ApplicationController
   			
   			# use the shop's update text to post to the customer's Twitter
   			client.update(@shop.update_text)
+  			
+  			rescue Twitter::Error => e
+	      		logger.error "#{e.message}."
+	      		@error = "There was an error with Twitter. Please try again."
+      		end
   			
   		elsif current_user.provider == "facebook"
   			if Rails.env == "development"
@@ -63,9 +69,6 @@ class CouponsController < ApplicationController
 		
   		# redirect the user to show the coupon code
   		redirect_to show_coupon_path
-  		
-  		rescue Twitter::Error => e
-      		logger.error "#{e.message}."
   	end
   	
   	def show_coupon  		
