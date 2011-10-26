@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110922205304) do
+ActiveRecord::Schema.define(:version => 20111026015511) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "coupon_code"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20110922205304) do
     t.string   "secret"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "full_name"
   end
 
 end
