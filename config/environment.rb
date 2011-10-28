@@ -7,8 +7,8 @@ CouponSociable::Application.initialize!
 
 # mailer settings
 ActionMailer::Base.smtp_settings = {
-  :user_name => "jburdeezy",
-  :password => "6EXxgyWNTT7ugD",
+  :user_name => "mobitics",
+  :password => "mob1t1cS",
   :domain => "couponsociable.com",
   :address => "smtp.sendgrid.net",
   :port => 587,
