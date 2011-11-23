@@ -18,11 +18,11 @@ class ApplicationController < ActionController::Base
       			charge = ShopifyAPI::RecurringApplicationCharge.create(:name => "Basic plan", :price => 5.00, :return_url => 'http://localhost:3000/charges/confirm', :trial_days => 30, :test => true)
       		else
       			if current_shop.url == "luxedesignerhandbags.myshopify.com"
-      				charge = ShopifyAPI::RecurringApplicationCharge.create(:name => "Mobitics plan", :price => 1.00, :return_url => 'https://couponsociable.com/charges/confirm', :trial_days => 30, :test => true)
+      				charge = ShopifyAPI::RecurringApplicationCharge.create(:name => "Mobitics plan", :price => 1.00, :return_url => 'http://couponsociable.com/charges/confirm', :trial_days => 30, :test => true)
 				elsif shop.plan_name == "development"
-					charge = ShopifyAPI::RecurringApplicationCharge.create(:name => "Basic plan", :price => 5.00, :return_url => 'https://couponsociable.com/charges/confirm', :trial_days => 30, :test => true)
+					charge = ShopifyAPI::RecurringApplicationCharge.create(:name => "Basic plan", :price => 5.00, :return_url => 'http://couponsociable.com/charges/confirm', :trial_days => 30, :test => true)
 				else
-					charge = ShopifyAPI::RecurringApplicationCharge.create(:name => "Basic plan", :price => 5.00, :return_url => 'https://couponsociable.com/charges/confirm', :trial_days => 30)
+					charge = ShopifyAPI::RecurringApplicationCharge.create(:name => "Basic plan", :price => 5.00, :return_url => 'http://couponsociable.com/charges/confirm', :trial_days => 30)
 				end
 			end
 			
