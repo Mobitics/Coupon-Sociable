@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
 				end
 			end
 			
-			redirect_to ShopifyAPI::RecurringApplicationCharge.pending.first.confirmation_url 
+			redirect_to charge.confirmation_url 
     	end
     end
   end
